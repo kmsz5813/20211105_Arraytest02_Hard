@@ -91,7 +91,6 @@ public class MainDrive {
 //				랜덤 추출 : Matj.random() * 45 + 1 => 0.0 ~ 1.0 사이의 값이 랜덤으로 추출됨. -> 정수 변환 : 1 ~ 45 랜덤. 
 				int randomNun = (int) (Math.random() * 45 + 1);
 
-				System.out.println("랜덤 숫자 : " + randomNun);
 
 //				중복검사진행
 //				당첨 번호 배열에, 지금 만든 랜덤 숫작 ㅏ있다면? 중복 검사 탈락.
@@ -111,8 +110,11 @@ public class MainDrive {
 //				중복검사 결과 활용
 				if (isDuplOk) {
 
+					
+					System.out.println("랜덤 숫자 : " + randomNun);
 //					제대로 랜덤 추출 -> 당첨번호로 사용.
 
+					
 					winLottoNumbers[i] = randomNun;
 
 //					다음 숫자 뽑으러 무한반복 탈출
