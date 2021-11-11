@@ -6,7 +6,7 @@ public class MainDrive {
 
 	public static void main(String[] args) {
 
-		Scanner myScanner = new Scanner(System.in);
+//		Scanner myScanner = new Scanner(System.in);
 
 //		입력한 숫자 6개를 저장할 배열
 		int[] myInputNumbers = new int[6];
@@ -74,39 +74,53 @@ public class MainDrive {
 
 //		당첨번호 임시로 6개의 숫자 직접 타이핑 (하드코딩)
 //		int[] winLottoNumbers = { 2, 13, 20, 30, 31, 41 };
-		
+
 //		당첨 번호 6개를 랜덤으로 추출
-		
+
 		int[] winLottoNumbers = new int[6];
-		
+
 //		6를 채워넣기 위한 for문
-		
-		for (int i=0; i< winLottoNumbers.length; i++) {
-			
+
+		for (int i = 0; i < winLottoNumbers.length; i++) {
+
 //			써도 되는 숫자를 뽑을때까지 무한반복
-			
+
 			while (true) {
-				
+
 //				랜덤 숫자 추출 -> 1 ~ 45로 추출하면, 범위검사는 필요가 없다.
 //				랜덤 추출 : Matj.random() * 45 + 1 => 0.0 ~ 1.0 사이의 값이 랜덤으로 추출됨. -> 정수 변환 : 1 ~ 45 랜덤. 
 				int randomNun = (int) (Math.random() * 45 + 1);
-				
+
 				System.out.println("랜덤 숫자 : " + randomNun);
-				
-//				임시 무조건 사용.
-				if(true) {
-					
+
+//				중복검사진행
+//				당첨 번호 배열에, 지금 만든 랜덤 숫작 ㅏ있다면? 중복 검사 탈락.
+				boolean isDuplOk = true;
+
+//				당첨번호 목록 조회
+				for (int winNum : winLottoNumbers) {
+					if (winNum == randomNun) {
+
+//						같은 숫자 발견 => 중복 발견 , 검사 탈락
+						isDuplOk = false;
+					}
+				}
+
+//				isDuplOk가 true로 낭마있다? => 중복된 숫자가 없었다.
+
+//				중복검사 결과 활용
+				if (isDuplOk) {
+
 //					제대로 랜덤 추출 -> 당첨번호로 사용.
-					
+
 					winLottoNumbers[i] = randomNun;
-					
+
 //					다음 숫자 뽑으러 무한반복 탈출
 					break;
 				}
-				
-				
+
 			}
-			
+
 		}
 
 //		몇등인지 판단. -> 몇개의 숫자가 같은가?
