@@ -109,7 +109,7 @@ public class MainDrive {
 //				중복검사 결과 활용
 				if (isDuplOk) {
 
-					System.out.println("랜덤 숫자 : " + randomNun);
+//					System.out.println("랜덤 숫자 : " + randomNun);
 //					제대로 랜덤 추출 -> 당첨번호로 사용.
 
 					winLottoNumbers[i] = randomNun;
@@ -155,6 +155,31 @@ public class MainDrive {
 
 		}
 
+//		당첨번호들을 작은 수 ~ 큰 수(오름차순)로 정렬 (Bubble sort 활용)
+
+		for (int i = 0; i < winLottoNumbers.length; i++) {
+
+//			j+1 번 칸에 접근 -> 배열 범위를 벗어날 위험이 있다. -> j의 범위를 길이-1 직전 까지만 가도록.
+			for (int j = 0; j < winLottoNumbers.length - 1; j++) {
+//				j:0 -> 당첨번호[0] / 당첨번호[1] 비교
+
+				if (winLottoNumbers[j] > winLottoNumbers[j + 1]) {
+
+					int backUp = winLottoNumbers[j];
+					winLottoNumbers[j] = winLottoNumbers[j + 1];
+					winLottoNumbers[j + 1] = backUp;
+
+				}
+
+			}
+
+		}
+
+//		당첨번호 목록도 출력
+		for (int winNum : winLottoNumbers) {
+			System.out.println("당첨 번호" + winNum);
+		}
+
 		System.out.println("보너스번호 : " + boonusNum);
 
 //		몇등인지 판단. -> 몇개의 숫자가 같은가?
@@ -193,13 +218,12 @@ public class MainDrive {
 					isBonusCorrect = true;
 				}
 			}
-			
+
 //			당첨 맞다 : 2등, 아니다 3등
-			
+
 			if (isBonusCorrect) {
 				System.out.println("2등");
-			}
-			else {
+			} else {
 				System.out.println("3등");
 			}
 
