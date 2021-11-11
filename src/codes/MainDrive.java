@@ -145,16 +145,17 @@ public class MainDrive {
 				}
 
 			}
-			
+
 //			검사 결과 true -> 보너스 번호로 사용해도됨.
 			if (isDuplOk) {
-				
+
 				boonusNum = randomNum;
 				break; // 보너스번호 추첨 종료
 			}
-			
 
 		}
+
+		System.out.println("보너스번호 : " + boonusNum);
 
 //		몇등인지 판단. -> 몇개의 숫자가 같은가?
 		int correctCount = 0;
@@ -181,7 +182,28 @@ public class MainDrive {
 		if (correctCount == 6) {
 			System.out.println("1등!");
 		} else if (correctCount == 5) {
-			System.out.println("3등");
+
+//			보너스 번호가, 내 입력한 번호중 하나로 들어있는가?
+
+//			못맞췄다고 전제했다가 -> 내 번호에서 찾으면 맞춘걸로.
+			boolean isBonusCorrect = false;
+
+			for (int myNum : myInputNumbers) {
+				if (boonusNum == myNum) {
+					isBonusCorrect = true;
+				}
+			}
+			
+//			당첨 맞다 : 2등, 아니다 3등
+			
+			if (isBonusCorrect) {
+				System.out.println("2등");
+			}
+			else {
+				System.out.println("3등");
+			}
+
+//			System.out.println("3등");
 
 		} else if (correctCount == 4) {
 			System.out.println("4등");
