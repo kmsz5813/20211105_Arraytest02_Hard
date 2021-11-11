@@ -6,7 +6,7 @@ public class MainDrive {
 
 	public static void main(String[] args) {
 
-//		Scanner myScanner = new Scanner(System.in);
+		Scanner myScanner = new Scanner(System.in);
 
 //		입력한 숫자 6개를 저장할 배열
 		int[] myInputNumbers = new int[6];
@@ -91,7 +91,6 @@ public class MainDrive {
 //				랜덤 추출 : Matj.random() * 45 + 1 => 0.0 ~ 1.0 사이의 값이 랜덤으로 추출됨. -> 정수 변환 : 1 ~ 45 랜덤. 
 				int randomNun = (int) (Math.random() * 45 + 1);
 
-
 //				중복검사진행
 //				당첨 번호 배열에, 지금 만든 랜덤 숫작 ㅏ있다면? 중복 검사 탈락.
 				boolean isDuplOk = true;
@@ -110,11 +109,9 @@ public class MainDrive {
 //				중복검사 결과 활용
 				if (isDuplOk) {
 
-					
 					System.out.println("랜덤 숫자 : " + randomNun);
 //					제대로 랜덤 추출 -> 당첨번호로 사용.
 
-					
 					winLottoNumbers[i] = randomNun;
 
 //					다음 숫자 뽑으러 무한반복 탈출
@@ -122,6 +119,40 @@ public class MainDrive {
 				}
 
 			}
+
+		}
+
+//		보너스번호도 추첨
+//		1~45 랜덤 + 당첨번호와 중복 X
+
+//		하나의 보너스 번호를 제대로 뽑을떄까지 반복.
+
+		int boonusNum = 0;
+
+		while (true) {
+
+			int randomNum = (int) (Math.random() * 45 + 1);
+
+//			당첨번호 안에 이미 있는지?
+			boolean isDuplOk = true;
+
+			for (int winNum : winLottoNumbers) {
+
+				if (randomNum == winNum) {
+//					중복 발견! -> 중복검사 탈락!
+					isDuplOk = false;
+
+				}
+
+			}
+			
+//			검사 결과 true -> 보너스 번호로 사용해도됨.
+			if (isDuplOk) {
+				
+				boonusNum = randomNum;
+				break; // 보너스번호 추첨 종료
+			}
+			
 
 		}
 
