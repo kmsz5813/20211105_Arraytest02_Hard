@@ -26,8 +26,25 @@ public class MainDrive {
 
 				boolean isRangOk = (1 <= inputNum) && (inputNum <= 45);
 
-//				임시로 범위 검사만 진행
-				if (isRangOk) {
+//				검사 2. 이미 입력한 숫자인가? 중복검사 결과를 boolean으로 저장.
+
+//				일단 써도 괜찮다 해뒀다가 -> 내 입력 목록에, 지금 입력한 숫자가 들어있나? 찾아보자.
+//				같은 숫자를 발견했다? 쓰면 안된다고 말 변경.
+				boolean isDuplOk = true;
+
+//				입력 숫자 목록 (배열) 조회 -> for - each문 활용.
+				for (int num : myInputNumbers) {
+
+//					꺼내온 숫자가 입력한 숫자랑 같은가?
+					if (num == inputNum) {
+
+//						중복검사 탈락!
+						isDuplOk = false;
+					}
+				}
+
+//				범위 검사도, 중복검사도 통과하면 숫자 대입 (사용 처리)
+				if (isRangOk && isDuplOk) {
 
 //					써도 되는 숫자를 입력 했다.
 					myInputNumbers[i] = inputNum;
@@ -35,8 +52,7 @@ public class MainDrive {
 //					다음 숫자 받으러 가자. -> while 무한반복 종료.
 					break;
 
-				}
-				else {
+				} else {
 					System.out.println("잘못된 숫자를 입력했습니다. 다시 입력해주세요.");
 				}
 
